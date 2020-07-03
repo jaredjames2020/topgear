@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :buses, only: [:index, :update, :show], param: :route_name
     resources :activities, only: [:index, :show, :create, :update], param: :vehicle
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  end
 end

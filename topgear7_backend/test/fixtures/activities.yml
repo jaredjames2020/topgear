@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  route_name: MyString
+  route_destination: MyString
+  direction: MyString
+  next_stop: MyString
+  stops_away: MyString
+  congestion: MyString
+  delay: MyString
+  route_id: 1
+  user_id: 1
+  bus_id: 1
+  vehicle: MyString
+
+two:
+  route_name: MyString
+  route_destination: MyString
+  direction: MyString
+  next_stop: MyString
+  stops_away: MyString
+  congestion: MyString
+  delay: MyString
+  route_id: 1
+  user_id: 1
+  bus_id: 1
+  vehicle: MyString

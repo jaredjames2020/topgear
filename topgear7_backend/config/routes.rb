@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'activities/index'
+  get 'activities/create'
+  get 'activities/show'
+  get 'activities/update'
   get 'buses/index'
   get 'buses/show'
   get 'buses/update'

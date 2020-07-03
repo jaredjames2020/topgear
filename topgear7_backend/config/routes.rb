@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/api/v1' do
+  scope '/api' do
     # resources :users, only: :index
     resources :routes, only: [:index, :show], param: :bus_line_name
     resources :buses, only: [:index, :update, :show], param: :route_name

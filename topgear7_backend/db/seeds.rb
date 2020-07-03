@@ -8,7 +8,7 @@
 
 Bus.destroy_all
 Route.destroy_all
-User.destroy_all
+# User.destroy_all
 Activity.destroy_all
 
 
@@ -313,7 +313,7 @@ Route.create(bus_line_name: "X68" , service_stops: "Hillside Av/268 St, Hillside
 
 
 
-User.create(username: "John Smith", current_location: "Brighton Beach Av/Ocean Py", observed_congestion: "normal", observed_time_status: "on time", observed_service_status: "normal")
+# User.create(username: "John Smith", current_location: "Brighton Beach Av/Ocean Py", observed_congestion: "normal", observed_time_status: "on time", observed_service_status: "normal")
 
 
 Bus.create(route_name: "X68", route_destination: "23 ST-1 AV via 34 ST",  route_origin: "FLORAL PARK via HILLSIDE", congestion: "normal", current_location: "pending", next_stop: "pending", stops_away: "pending", user_location: "pending", route: Route.find_by(bus_line_name: "X68"))

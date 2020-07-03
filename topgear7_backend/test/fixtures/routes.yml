@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bus_line_name: MyString
+  service_stops: MyString
+  service_status: MyString
+  service_origin: MyString
+  service_destination: MyString
+  bus_id: 1
+  user_id: 1
+
+two:
+  bus_line_name: MyString
+  service_stops: MyString
+  service_status: MyString
+  service_origin: MyString
+  service_destination: MyString
+  bus_id: 1
+  user_id: 1

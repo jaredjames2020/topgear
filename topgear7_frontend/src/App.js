@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import Routelist from "./components/Routelist";
 
+console.log(process.env.REACT_APP_MTA_API_KEY);
+
 class App extends Component {
   render() {
     return (

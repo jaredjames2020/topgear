@@ -4,25 +4,12 @@ export const fetchMTABus = () => {
     dispatch({type: "LOAD_MTA"});
     fetch(API_ENDPOINT)
       .then(response => response.json())
-      .then(vehicle => {
+      .then(bus_data => {
         dispatch({
-          type: "ADD_BUSES"
-          // data:
-          //   data.Siri.ServiceDelivery.VehicleMonitoringDelivery[0]
-          //     .VehicleActivity
+          type: "ADD_BUSES",
+          bus_data
         });
       })
       .catch(error => console.log(error));
   };
 };
-
-// async componentDidMount() {
-//   await fetch("http://localhost:5000/vehicle")
-//     .then(resp => resp.json())
-//     .then(data => {
-//       const bus_activity =
-//         data.Siri.ServiceDelivery.VehicleMonitoringDelivery[0]
-//           .VehicleActivity;
-//       this.setState({mta_vehicle_activity: bus_activity});
-//     });
-// }

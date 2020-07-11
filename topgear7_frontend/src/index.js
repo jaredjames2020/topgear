@@ -4,10 +4,18 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+import {createStore, applyMiddleware} from "redux";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+
+import mtaBusReducer from "./reducers/mtaBusReducer";
+
+const store = createStore(mtaBusReducer, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <div>
+  <Provider store={store}>
     <App />
-  </div>,
+  </Provider>,
   document.getElementById("root")
 );
 

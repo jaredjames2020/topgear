@@ -1,34 +1,48 @@
 import React, {Component} from "react";
-import "./App.css";
-import Routelist from "./components/Routelist";
-import Routestatus from "./components/Routestatus";
+import {connect} from "react-redux";
+import {fetchMTABus} from "./actions/mtaActions";
 
-console.log(process.env.REACT_APP_MTA_API_KEY);
+// import CatList from "./CatList"; //presentational Component
+import "./App.css";
+import MTAContainer from "./containers/MTAContainer";
 
 class App extends Component {
-  state = {
-    mta_vehicle_activity: []
-  };
-
-  async componentDidMount() {
-    await fetch("http://localhost:5000/vehicle")
-      .then(resp => resp.json())
-      .then(data => {
-        const bus_activity =
-          data.Siri.ServiceDelivery.VehicleMonitoringDelivery[0]
-            .VehicleActivity;
-        this.setState({mta_vehicle_activity: bus_activity});
-      });
+  componentDidMount() {
+    this.props.fetchMTABus();
   }
 
   render() {
     return (
       <div>
-        <Routelist />
-        <Routestatus activity={this.state.mta_vehicle_activity} />
+        <MTAContainer />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    catPics: state.cats,
+    loading: state.loading
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMTABus: () => dispatch(fetchMTABus())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+//
+//   render() {
+//     console.log(this.props.loading)
+//     return (
+//       <div>
+//         <h1>CatBook</h1>
+//         <CatList catPics={this.props.catPics} />
+//       </div>
+//     );
+//   }
+// }

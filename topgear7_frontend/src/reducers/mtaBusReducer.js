@@ -1,15 +1,20 @@
 export default function mtaBusReducer(
   state = {
-    route_name: []
+    bus_data: [],
+    loading: false
   },
   action
 ) {
   switch (action.type) {
     case "LOAD_MTA":
-      const route_name = state.route_name.filter(
-        route_name => route_name.id !== action.id
-      );
-      return {...state, route_name: [...state.route_name, route_name]};
+      return {...state, bus_data: [...state.bus_data], loading: true};
+
+    case "ADD_BUSES":
+      return {
+        ...state,
+        bus_data: action.bus_data,
+        loading: false
+      };
 
     default:
       return state;

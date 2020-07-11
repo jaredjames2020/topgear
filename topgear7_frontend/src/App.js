@@ -12,9 +12,11 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.bus_data);
+    console.log(this.props.loading);
     return (
       <div>
-        <MTAContainer />
+        <MTAContainer bus_data={this.props.bus_data} />
       </div>
     );
   }
@@ -22,7 +24,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    catPics: state.cats,
+    bus_data: state.bus_data,
     loading: state.loading
   };
 };
@@ -34,15 +36,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-//
-//   render() {
-//     console.log(this.props.loading)
-//     return (
-//       <div>
-//         <h1>CatBook</h1>
-//         <CatList catPics={this.props.catPics} />
-//       </div>
-//     );
-//   }
-// }

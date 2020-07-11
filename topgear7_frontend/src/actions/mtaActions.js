@@ -7,7 +7,9 @@ export const fetchMTABus = () => {
       .then(bus_data => {
         dispatch({
           type: "ADD_BUSES",
-          bus_data
+          bus_data:
+            bus_data.Siri.ServiceDelivery.VehicleMonitoringDelivery[0]
+              .VehicleActivity
         });
       })
       .catch(error => console.log(error));

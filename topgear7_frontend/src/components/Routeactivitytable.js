@@ -57,7 +57,7 @@ class Routeactivitytable extends Component {
 
   render() {
     const {directionRef0, directionRef1} = this.props;
-    console.log(this.props.currentActivity);
+    console.log(this.props.selected_route);
     console.log(directionRef0);
     console.log(directionRef1);
 

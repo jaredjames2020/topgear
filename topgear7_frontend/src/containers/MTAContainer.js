@@ -18,8 +18,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  findRoute: route => dispatch({type: "FIND_ROUTE", route})
-});
+// const mapDispatchToProps = dispatch => ({
+//   findRoute: route => dispatch({type: "FIND_ROUTE", route})
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MTAContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(MTAContainer);
+export default connect(mapStateToProps)(MTAContainer);

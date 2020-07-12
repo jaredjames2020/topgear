@@ -1,12 +1,16 @@
 import React, {Component} from "react";
 // import {connect} from "react-redux";
-import ActivityRoutelist from "../components/ActivityRoutelist";
+import ActivityRoutetable from "../components/ActivityRoutetable";
 
 class ActivityContainer extends Component {
   render() {
     return (
       <div>
-        <ActivityRoutelist currentActivity={this.props.selected_route} />
+        <ActivityRoutetable
+          currentActivity={this.props.selected_route}
+          directionRef0={this.props.directionRef0}
+          directionRef1={this.props.directionRef1}
+        />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ActivityContainer from "../containers/ActivityContainer";
 
 class Routefinder extends Component {
   state = {
@@ -37,6 +38,7 @@ class Routefinder extends Component {
     console.log(inputFilteredRoutes);
     console.log(uniqueRoutes);
     console.log(unique.sort());
+    console.log(this.state.selected_route);
 
     return (
       <div>
@@ -55,7 +57,7 @@ class Routefinder extends Component {
           ))}
         </select>
 
-        <h4>{this.findName}</h4>
+        <ActivityContainer selected_route={this.state.selected_route} />
       </div>
     );
   }

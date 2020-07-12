@@ -12,8 +12,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.bus_data);
-    console.log(this.props.loading);
     return (
       <div>
         <MTAContainer bus_data={this.props.bus_data} />

@@ -6,7 +6,7 @@ class Situationtable extends Component {
     let routes_affected = [];
     let routes_array = [];
     let routes = [];
-    for (var prop in map_situations.PtSituationElement) {
+    for (let prop in map_situations.PtSituationElement) {
       if (map_situations.PtSituationElement.hasOwnProperty(prop)) {
         routes_affected.push(
           map_situations.PtSituationElement[prop]["Affects"]
@@ -14,7 +14,7 @@ class Situationtable extends Component {
       }
     }
     // console.log(routes_affected);
-    for (var prop in routes_affected) {
+    for (let prop in routes_affected) {
       if (routes_affected.hasOwnProperty(prop)) {
         routes_array.push(
           routes_affected[prop]["VehicleJourneys"]["AffectedVehicleJourney"]
@@ -22,7 +22,7 @@ class Situationtable extends Component {
       }
     }
     // console.log(routes_array);
-    for (var prop in routes_array) {
+    for (let prop in routes_array) {
       if (routes_array.hasOwnProperty(prop)) {
         routes.push(
           ...routes_array[prop].map(ref => ref["LineRef"].split("_").pop())
@@ -36,7 +36,7 @@ class Situationtable extends Component {
   renderSummary() {
     const map_situations = this.props.situations;
     let summary = [];
-    for (var prop in map_situations.PtSituationElement) {
+    for (let prop in map_situations.PtSituationElement) {
       if (map_situations.PtSituationElement.hasOwnProperty(prop)) {
         summary.push(map_situations.PtSituationElement[prop]["Summary"]);
       }

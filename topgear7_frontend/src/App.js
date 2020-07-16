@@ -33,7 +33,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  console.log(fetchSituations());
   return {
     fetchMTABus: () => dispatch(fetchMTABus()),
     fetchSituations: () => dispatch(fetchSituations())

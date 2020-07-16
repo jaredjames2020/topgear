@@ -2,12 +2,21 @@ import React, {Component} from "react";
 import ActivityContainer from "../containers/ActivityContainer";
 
 class Routefinder extends Component {
-  state = {
-    input_route_search: "",
-    selected_route: "",
-    directionRef0: [],
-    directionRef1: []
-  };
+  // state = {
+  //   input_route_search: "",
+  //   selected_route: "",
+  //   directionRef0: [],
+  //   directionRef1: []
+  // };
+  constructor() {
+    super();
+    this.state = {
+      input_route_search: "",
+      selected_route: "",
+      directionRef0: [],
+      directionRef1: []
+    };
+  }
 
   inputHandleOnChange = event => {
     this.setState({input_route_search: event.target.value});
@@ -85,4 +94,5 @@ class Routefinder extends Component {
 }
 //refactor dropdown to a selectable table
 //remove submit from input "type=submit"
+//set default value to the selected_route
 export default Routefinder;

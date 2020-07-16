@@ -1,9 +1,16 @@
 import React, {Component} from "react";
 
 class Routelist extends Component {
-  state = {
-    route_data: []
-  };
+  // state = {
+  //   route_data: []
+  // };
+
+  constructor() {
+    super();
+    this.state = {
+      route_data: []
+    };
+  }
 
   async componentDidMount() {
     const res = await fetch("http://localhost:3001/api/routes");

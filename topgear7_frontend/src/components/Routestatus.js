@@ -7,7 +7,9 @@ class Routestatus extends Component {
     );
 
     const filteredJourney = linename.filter(
-      route => route.PublishedLineName === "Q83" //make dynamic by passing props back up from routelist
+      route => route.PublishedLineName === "Q83"
+      //make dynamic by passing props back up from routelist
+      //render from Routelist a prop that contains the value and then call this.props <Routestatus line_name={this.selected_route}
     );
 
     let direction_alpha = filteredJourney.filter(

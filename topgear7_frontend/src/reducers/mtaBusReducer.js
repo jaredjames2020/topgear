@@ -1,6 +1,7 @@
 export default function mtaBusReducer(
   state = {
     bus_data: [],
+    situations: [],
     loading: false
   },
   action
@@ -13,6 +14,16 @@ export default function mtaBusReducer(
       return {
         ...state,
         bus_data: action.bus_data,
+        loading: false
+      };
+
+    case "LOAD_SITUATIONS":
+      return {...state, situations: [...state.situations], loading: true};
+
+    case "ADD_SITUATIONS":
+      return {
+        ...state,
+        situations: action.situations,
         loading: false
       };
 

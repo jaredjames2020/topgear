@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import {BrowserRouter, Route} from "react-router-dom";
+// import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -14,7 +17,9 @@ const store = createStore(mtaBusReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

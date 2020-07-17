@@ -49,10 +49,30 @@ class Situationtable extends Component {
       return (
         <tr key={index}>
           <td>{routes}</td>
+          <td>{routes}</td>
+          <td>{routes}</td>
         </tr>
       );
     });
   }
+
+  // renderTableData() {
+  //   const array = this.renderRoutesAffected();
+  //   let i = 0;
+  //   let pass = [];
+  //   for (i = 0; i < array.length; i++) {
+  //     if (i % 3) {
+  //       let first = array[i];
+  //       let second = array[i + 1];
+  //       let third = array[i + 2];
+  //       let index = i;
+  //       pass.push(first, second, third, index);
+  //       i = i + 2;
+  //     }
+  //   }
+  //   console.log(pass);
+  //   return pass;
+  // }
 
   render() {
     console.log(this.renderRoutesAffected());
@@ -61,8 +81,8 @@ class Situationtable extends Component {
     return (
       <div>
         <h1>SITUATION</h1>
-        <table id="routes">
-          <tbody>{this.renderTableData()}</tbody>
+        <table id="routes" className="table">
+          <tbody id="bodyTable">{this.renderTableData()}</tbody>
         </table>
       </div>
     );

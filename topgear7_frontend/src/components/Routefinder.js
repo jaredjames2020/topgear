@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import ActivityContainer from "../containers/ActivityContainer";
+import Routeactivitytable from "./Routeactivitytable";
+import MTAGooglemap from "./MTAGooglemap";
 
 class Routefinder extends Component {
   // state = {
@@ -83,11 +85,12 @@ class Routefinder extends Component {
             </option>
           ))}
         </select>
-        <ActivityContainer
+        <Routeactivitytable
           selected_route={this.state.selected_route}
           directionRef0={directionRef0}
           directionRef1={directionRef1}
         />
+        <MTAGooglemap />
       </div>
     );
   }
@@ -95,4 +98,9 @@ class Routefinder extends Component {
 //refactor dropdown to a selectable table
 //remove submit from input "type=submit"
 //set default value to the selected_route
+// <ActivityContainer
+//   selected_route={this.state.selected_route}
+//   directionRef0={directionRef0}
+//   directionRef1={directionRef1}
+// />
 export default Routefinder;

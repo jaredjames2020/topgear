@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Routelist from "./Routelist";
+import {Table} from "react-bootstrap";
 
 class Routeactivitytable extends Component {
   renderTableName(direction) {
@@ -67,21 +69,28 @@ class Routeactivitytable extends Component {
         <h4>
           {this.renderName(this.renderTableName(this.props.directionRef0))}
         </h4>
-        <table id="dir0_activity_table">
-          <tbody>
-            <tr>{this.renderTableHeader()}</tr>
-            {this.renderTableData0()}
-          </tbody>
+        <table className="table table-sm" id="dir0_activity_table">
+          <thead>
+            <tr>{this.renderTableHeader(this.props.directionRef0)}</tr>
+          </thead>
+          <tbody>{this.renderTableData0()}</tbody>
         </table>
+
         <h4>
           {this.renderName(this.renderTableName(this.props.directionRef1))}
         </h4>
-        <table id="dir1_activity_table">
-          <tbody>
+        <table className="table table-sm" id="dir1_activity_table">
+          <thead>
             <tr>{this.renderTableHeader(this.props.directionRef1)}</tr>
-            {this.renderTableData1()}
-          </tbody>
+          </thead>
+          <tbody>{this.renderTableData1()}</tbody>
         </table>
+
+        <Routelist
+          selected_route={this.props.selected_route}
+          directionRef0={this.props.directionRef0}
+          directionRef1={this.props.directionRef1}
+        />
       </div>
     );
   }

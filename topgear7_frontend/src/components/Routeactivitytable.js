@@ -85,15 +85,14 @@ class Routeactivitytable extends Component {
           </thead>
           <tbody>{this.renderTableData1()}</tbody>
         </table>
-
-        <Routelist
-          selected_route={this.props.selected_route}
-          directionRef0={this.props.directionRef0}
-          directionRef1={this.props.directionRef1}
-        />
       </div>
     );
   }
 }
 
 export default Routeactivitytable;
+// <Routelist
+//   selected_route={this.props.selected_route}
+//   directionRef0={this.props.directionRef0}
+//   directionRef1={this.props.directionRef1}
+// />

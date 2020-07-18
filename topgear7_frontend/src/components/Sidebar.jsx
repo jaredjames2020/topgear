@@ -5,7 +5,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <div class="d-flex" id="wrapper">
+        <div className="d-flex" id="wrapper">
           <div className="bg-light border-right" id="sidebar-wrapper">
             <div className="sidebar-heading">
               TOP GEAR: <br></br>Where do you want to go?

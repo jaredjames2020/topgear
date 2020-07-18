@@ -13,7 +13,7 @@ class Situationtable extends Component {
         );
       }
     }
-    // console.log(routes_affected);
+
     for (let prop in routes_affected) {
       if (routes_affected.hasOwnProperty(prop)) {
         routes_array.push(
@@ -21,7 +21,7 @@ class Situationtable extends Component {
         );
       }
     }
-    // console.log(routes_array);
+
     for (let prop in routes_array) {
       if (routes_array.hasOwnProperty(prop)) {
         routes.push(
@@ -29,8 +29,10 @@ class Situationtable extends Component {
         );
       }
     }
+
     const unique_routes = [...new Set(routes)];
-    return unique_routes.sort();
+    const sortAlphaNum = (a, b) => a.localeCompare(b, "en", {numeric: true});
+    return unique_routes.sort(sortAlphaNum);
   }
 
   renderSummary() {
@@ -44,45 +46,42 @@ class Situationtable extends Component {
     return summary;
   }
 
-  renderTableData() {
-    return this.renderRoutesAffected().map((routes, index) => {
+  renderTableVehicleData() {
+    return (
+      <tr key={1}>
+        <td>
+          {this.renderRoutesAffected()
+            .toString()
+            .replace(/,/g, ", ")}
+        </td>
+      </tr>
+    );
+  }
+
+  renderTableSummaryData() {
+    return this.renderSummary().map((summary, index) => {
       return (
         <tr key={index}>
-          <td>{routes}</td>
-          <td>{routes}</td>
-          <td>{routes}</td>
+          <td>{summary}</td>
         </tr>
       );
     });
-  }
-
-  // renderTableData() {
-  //   const array = this.renderRoutesAffected();
-  //   let i = 0;
-  //   let pass = [];
-  //   for (i = 0; i < array.length; i++) {
-  //     if (i % 3) {
-  //       let first = array[i];
-  //       let second = array[i + 1];
-  //       let third = array[i + 2];
-  //       let index = i;
-  //       pass.push(first, second, third, index);
-  //       i = i + 2;
-  //     }
-  //   }
-  //   console.log(pass);
-  //   return pass;
-  // }
+  } //.replace(/<(.*)>/, "") - regex
 
   render() {
-    console.log(this.renderRoutesAffected());
-    console.log(this.renderSummary());
-
     return (
       <div>
         <h1>SITUATION</h1>
         <table id="routes" className="table">
-          <tbody id="bodyTable">{this.renderTableData()}</tbody>
+          <tbody id="bodyTable">
+            {this.props.loading
+              ? " LOADING VEHICLE STATUS"
+              : this.renderTableVehicleData()}
+
+            {this.props.loading
+              ? " LOADING SUMMARY"
+              : this.renderTableSummaryData()}
+          </tbody>
         </table>
       </div>
     );

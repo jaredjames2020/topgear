@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Routefinder from "../components/Routefinder";
+import Routefinder from "../components/Route/Routefinder";
 
 class MTAContainer extends Component {
   render() {

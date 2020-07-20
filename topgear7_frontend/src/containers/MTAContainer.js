@@ -14,7 +14,8 @@ class MTAContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    VehicleActivity: state.bus_data
+    VehicleActivity: state.bus_data,
+    loading: state.loading
   };
 };
 

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Situationtable from "../components/Situationtable";
-import Sidebar from "../components/Sidebar";
+import Situationtable from "../components/Situation/Situationtable";
 
 class SituationContainer extends Component {
   render() {

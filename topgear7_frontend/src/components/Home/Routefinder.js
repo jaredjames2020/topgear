@@ -72,18 +72,22 @@ class Routefinder extends Component {
               </InputGroup>
             </Col>
             <Col xs="auto">
-              <Form.Control
-                as="select"
-                id="route_name"
-                onChange={this.selectedHandleOnChange}
-              >
-                {" "}
-                {unique.map((name, i) => (
-                  <option value={name} key={i}>
-                    {name}
-                  </option>
-                ))}
-              </Form.Control>
+              {this.props.vehicleActivity.length !== 0 ? (
+                <Form.Control
+                  as="select"
+                  id="route_name"
+                  onChange={this.selectedHandleOnChange}
+                >
+                  {" "}
+                  {unique.map((name, i) => (
+                    <option value={name} key={i}>
+                      {name}
+                    </option>
+                  ))}
+                </Form.Control>
+              ) : (
+                <h2>LOADING</h2>
+              )}
             </Col>
           </Form.Row>
         </Form.Group>

@@ -9,7 +9,7 @@ export const fetchSituations = () => {
           type: "ADD_SITUATIONS",
           situations:
             data.Siri.ServiceDelivery.SituationExchangeDelivery[0].Situations,
-          loading: "true"
+          loading: true
         });
       })
 

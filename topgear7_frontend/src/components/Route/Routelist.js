@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Form, InputGroup, Col, Table} from "react-bootstrap";
+import {Form, InputGroup, Col, Table, Container} from "react-bootstrap";
 
 class Routelist extends Component {
   constructor() {
@@ -117,17 +117,21 @@ class Routelist extends Component {
           </Form.Row>
         </Form.Group>
 
-        <p id="title">Route: {this.state.selected_route}</p>
-        <p>To: {this.getTableNameDes()}</p>
-        <Table striped bordered hover size="auto" id="dir0_activity_table">
-          <tbody>{this.getStopName(this.getStopList())}</tbody>
-        </Table>
+        {this.state.selected_route ? (
+          <Container>
+            <p id="title">Route: {this.state.selected_route}</p>
+            <p>To: {this.getTableNameDes()}</p>
+            <Table striped bordered hover size="auto" id="dir0_activity_table">
+              <tbody>{this.getStopName(this.getStopList())}</tbody>
+            </Table>
 
-        <br></br>
-        <p>To: {this.getTableNameOri()}</p>
-        <Table striped bordered hover size="auto" id="dir1_activity_table">
-          <tbody>{this.getStopName(this.getStopList()).reverse()}</tbody>
-        </Table>
+            <br></br>
+            <p>To: {this.getTableNameOri()}</p>
+            <Table striped bordered hover size="auto" id="dir1_activity_table">
+              <tbody>{this.getStopName(this.getStopList()).reverse()}</tbody>
+            </Table>
+          </Container>
+        ) : null}
       </div>
     );
   }

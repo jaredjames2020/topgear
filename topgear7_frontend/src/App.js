@@ -9,7 +9,7 @@ import Sidebar from "../src/components/Sidebar";
 import "./App.css";
 import MTAContainer from "./containers/MTAContainer";
 import SituationContainer from "./containers/SituationContainer";
-import {RouteContainer as BusRoute} from "./containers/RouteContainer";
+import RouteContainer from "./containers/RouteContainer";
 import NotFound from "./components/NotFound";
 
 class App extends Component {
@@ -21,35 +21,39 @@ class App extends Component {
   render() {
     return (
       <>
-        <Container>
+        <Container className="container">
+          <br></br>
+          <br></br>
           <Row>
             <Col md={3}>
               <Sidebar />
             </Col>
-            <Col md={9}>
-              <div>
-                <Switch>
-                  <Route
-                    path="/situation"
-                    render={props => (
-                      <SituationContainer
-                        situations={this.props.situations}
-                        {...props}
-                      />
-                    )}
-                  />
-                  <Route path="/not_found" component={NotFound} />
-                  <Route
-                    path="/"
-                    exact
-                    render={props => (
-                      <MTAContainer bus_data={this.props.bus_data} {...props} />
-                    )}
-                  />
-                  <Redirect to="/not_found" />
-                </Switch>
-              </div>
-            </Col>
+            <div>
+              <Switch>
+                <Route
+                  path="/situation"
+                  render={props => (
+                    <SituationContainer
+                      situations={this.props.situations}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  path="/busroute"
+                  render={props => <RouteContainer {...props} />}
+                />
+                <Route path="/not_found" component={NotFound} />
+                <Route
+                  path="/"
+                  exact
+                  render={props => (
+                    <MTAContainer bus_data={this.props.bus_data} {...props} />
+                  )}
+                />
+                <Redirect to="/not_found" />
+              </Switch>
+            </div>
           </Row>
         </Container>
       </>

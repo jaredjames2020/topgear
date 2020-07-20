@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Table, Col} from "react-bootstrap";
 
 class Situationtable extends Component {
   renderRoutesAffected() {
@@ -71,18 +72,25 @@ class Situationtable extends Component {
   render() {
     return (
       <div>
-        <h1>SITUATION</h1>
-        <table id="routes" className="table">
-          <tbody id="bodyTable">
+        <Col>
+          <h1>ROUTES WITH PLANNED SERVICE CHANGES</h1>
+          <br></br>
+          <p>
             {this.props.loading
               ? " LOADING VEHICLE STATUS"
               : this.renderTableVehicleData()}
-
+          </p>
+          <br></br>
+          <br></br>
+        </Col>
+        <h3>SERVICE SUMMARY</h3>
+        <Table striped bordered hover id="routes" className="table">
+          <tbody id="bodyTable">
             {this.props.loading
               ? " LOADING SUMMARY"
               : this.renderTableSummaryData()}
           </tbody>
-        </table>
+        </Table>
       </div>
     );
   }

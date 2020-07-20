@@ -9,7 +9,8 @@ export const fetchMTABus = () => {
           type: "ADD_BUSES",
           bus_data:
             bus_data.Siri.ServiceDelivery.VehicleMonitoringDelivery[0]
-              .VehicleActivity
+              .VehicleActivity,
+          loading: true
         });
       })
       .catch(error => console.log(error));

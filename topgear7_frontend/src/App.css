@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.container{
+  /*background-image: url(./assets/img/tgb3.png);*/
+}
+
+.sidebar{
+
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +45,6 @@
   to {
     transform: rotate(360deg);
   }
+
+
 }

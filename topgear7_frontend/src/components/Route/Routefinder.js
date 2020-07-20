@@ -87,11 +87,14 @@ class Routefinder extends Component {
             </Col>
           </Form.Row>
         </Form.Group>
-        <Routeactivitytable
-          selected_route={selected_route}
-          directionRef0={directionRef0}
-          directionRef1={directionRef1}
-        />
+        {this.state.selected_route ? (
+          <Routeactivitytable
+            selected_route={selected_route}
+            directionRef0={directionRef0}
+            directionRef1={directionRef1}
+          />
+        ) : null}
+
         <MTAGooglemap
           directionRef0={directionRef0}
           directionRef1={directionRef1}

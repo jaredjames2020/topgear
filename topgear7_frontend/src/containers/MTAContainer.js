@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Routefinder from "../components/Route/Routefinder";
+import Routefinder from "../components/Home/Routefinder";
 
 class MTAContainer extends Component {
   render() {
@@ -10,7 +10,7 @@ class MTAContainer extends Component {
       </div>
     );
   }
-}
+} //TODO: LOADING FEATURE WHEN DATA IS FETCHING
 
 const mapStateToProps = state => {
   return {
@@ -22,5 +22,4 @@ const mapStateToProps = state => {
 //   findRoute: route => dispatch({type: "FIND_ROUTE", route})
 // });
 
-// export default connect(mapStateToProps, mapDispatchToProps)(MTAContainer);
 export default connect(mapStateToProps)(MTAContainer);

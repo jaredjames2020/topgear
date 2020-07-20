@@ -63,11 +63,11 @@ class Situationtable extends Component {
     return this.renderSummary().map((summary, index) => {
       return (
         <tr key={index}>
-          <td>{summary}</td>
+          <td>{summary.replace(new RegExp("<[\\d\\D]*?>", "g"), " ")}</td>
         </tr>
       );
     });
-  } //.replace(/<(.*)>/, "") - regex
+  }
 
   render() {
     return (

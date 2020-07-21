@@ -1,5 +1,10 @@
 import React, {Component} from "react";
 import {Table} from "react-bootstrap";
+import {
+  addCongestionActivity,
+  addDelayActivity
+} from "../../actions/activityActions";
+import {connect} from "react-redux";
 
 class Routeactivitytable extends Component {
   gettablename = direction => {
@@ -14,7 +19,7 @@ class Routeactivitytable extends Component {
   };
 
   gettableheader = () => {
-    let header = ["Next Stop", "Congestion", "Delay", "Latitude", "Longitude"];
+    let header = ["Next Stop", "Congestion", "Delay", "Seating", "On Time"];
     return header.map((key, index) => {
       return <th key={index}>{key.toUpperCase()}</th>;
     });
@@ -31,11 +36,35 @@ class Routeactivitytable extends Component {
           <td>{nextStop}</td>
           <td>{"Normal"}</td>
           <td>{"No delay"}</td>
-          <td>{lat}</td>
-          <td>{long}</td>
+          <td>
+            <select className="congestionbtn">
+              <option value={vehId + "-manyseats"}>Many Seats</option>
+              <option value={vehId + "-limitedseats"}>Limited Seats</option>
+              <option value={vehId + "-noseats"}>No Seats</option>
+            </select>
+          </td>
+          <td>
+            <select className="delaybtn">
+              <option value={vehId + "-nodelay"}>No Delay</option>
+              <option value={vehId + "-emergency"}>Emergency</option>
+              <option value={vehId + "-accident"}>Accident</option>
+            </select>
+          </td>
         </tr>
       );
     });
+  };
+
+  handleCongestionOnSelect = event => {
+    const seating = event.target.value.split("-");
+    this.props.addCongestionActivity(seating);
+    console.log(seating);
+  };
+
+  handleDelayOnSelect = event => {
+    const punctual = event.target.value.split("-");
+    this.props.addDelayActivity(punctual);
+    console.log(punctual);
   };
 
   render() {
@@ -46,7 +75,12 @@ class Routeactivitytable extends Component {
       <div>
         <h3 id="title">REAL TIME ACTIVITY TRACKER</h3>
         <h4>{getname(gettablename(directionRef0))}</h4>
-        <Table className="table table-sm" id="dir0_activity_table">
+        <Table
+          className="table table-sm"
+          id="dir0_activity_table"
+          onChange={this.handleCongestionOnSelect}
+          onChange={this.handleDelayOnSelect}
+        >
           <thead>
             <tr>{gettableheader(directionRef0)}</tr>
           </thead>
@@ -54,7 +88,12 @@ class Routeactivitytable extends Component {
         </Table>
 
         <h4>{getname(gettablename(directionRef1))}</h4>
-        <Table className="table table-sm" id="dir1_activity_table">
+        <Table
+          className="table table-sm"
+          id="dir1_activity_table"
+          onChange={this.handleCongestionOnSelect}
+          onChange={this.handleDelayOnSelect}
+        >
           <thead>
             <tr>{gettableheader(directionRef1)}</tr>
           </thead>
@@ -65,4 +104,18 @@ class Routeactivitytable extends Component {
   }
 }
 
-export default Routeactivitytable;
+const mapDispatchToProps = dispatch => {
+  return {
+    addCongestionActivity: activity => {
+      dispatch(addCongestionActivity(activity));
+    },
+    addDelayActivity: activity => {
+      dispatch(addDelayActivity(activity));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Routeactivitytable);
+// <td>{lat}</td>
+// <td>{long}</td>
+// ["Next Stop", "Congestion", "Delay", "Latitude", "Longitude"]

@@ -3,6 +3,7 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {fetchMTABus} from "./actions/mtaActions";
 import {fetchSituations} from "./actions/situationActions";
+// import {addActivity} from "./actions/activityActions";
 import {Container, Row, Col} from "react-bootstrap";
 import Sidebar from "../src/components/Sidebar";
 
@@ -16,6 +17,7 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchMTABus();
     this.props.fetchSituations();
+    // this.props.addActivity();
   }
 
   render() {
@@ -73,6 +75,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchMTABus: () => dispatch(fetchMTABus()),
     fetchSituations: () => dispatch(fetchSituations())
+    // addActivity: () => dispatch(addActivity())
   };
 };
 

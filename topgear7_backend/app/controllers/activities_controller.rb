@@ -1,15 +1,16 @@
 class ActivitiesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
-    render :json => Activity.all
+    render :json => Activity.all.reverse()
   end
 
   def create
-    activity = Activity.new(activities_params)
+    activity = Activity.create(activity_params)
     if activity.save
-      redirect_to "/activities"
+      render json: activity
     else
-      render :json => Activity.all
+      render json: { error: activity.errors.full_messages }
     end
   end
 
@@ -19,13 +20,14 @@ class ActivitiesController < ApplicationController
 
   def update
     activity = Activity.find_by(vehicle: params[:vehicle])
-    activity.update(congestion: params[:congestion], delay: params[:delay])
+    activity.update(congestion: params[:congestion], delay: params[:delay], favorites: params[:favorites])
     render :json => Activity.find_by(vehicle: params[:vehicle])
   end
 
-private
-  def activities_params
-    params.require(:activity).permit(:route_name, :route_destination, :direction, :next_stop, :stops_away, :congestion, :delay, :route_id, :user_id, :bus_id, :vehicle)
+  private
+
+  def activity_params
+      params.require(:activity).permit(:congestion, :delay, :vehicle, :route_name, :route_destination)
   end
 
 end

@@ -1,13 +1,10 @@
 import React, {Component} from "react";
+import "./App.css";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {fetchMTABus} from "./actions/mtaActions";
 import {fetchSituations} from "./actions/situationActions";
-// import {addActivity} from "./actions/activityActions";
-import {Container, Row, Col} from "react-bootstrap";
 import Sidebar from "../src/components/Sidebar";
-
-import "./App.css";
 import MTAContainer from "./containers/MTAContainer";
 import SituationContainer from "./containers/SituationContainer";
 import RouteContainer from "./containers/RouteContainer";
@@ -17,20 +14,21 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchMTABus();
     this.props.fetchSituations();
-    // this.props.addActivity();
   }
 
   render() {
     return (
       <>
-        <Container className="container">
-          <br></br>
-          <br></br>
-          <Row>
-            <Col md={3}>
+        <div className="container-home">
+          <div className="container-header">
+            <h1>TOP GEAR:</h1>
+            <h4>WHERE DO YOU WANT TO GO?</h4>
+          </div>
+          <div className="container-body">
+            <div className="navbar">
               <Sidebar />
-            </Col>
-            <div>
+            </div>
+            <div className="widgets">
               <Switch>
                 <Route
                   path="/situation"
@@ -56,8 +54,8 @@ class App extends Component {
                 <Redirect to="/not_found" />
               </Switch>
             </div>
-          </Row>
-        </Container>
+          </div>
+        </div>
       </>
     );
   }
@@ -75,10 +73,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchMTABus: () => dispatch(fetchMTABus()),
     fetchSituations: () => dispatch(fetchSituations())
-    // addActivity: () => dispatch(addActivity())
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-//<SituationContainer situations={this.props.situations} />
-// <Route path="/busroute" component={BusRoute} />

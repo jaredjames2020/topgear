@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Table, Col} from "react-bootstrap";
 
 class Situationtable extends Component {
   renderRoutesAffected() {
@@ -49,14 +48,21 @@ class Situationtable extends Component {
 
   renderTableVehicleData() {
     return (
-      <tr key={1}>
-        <td>
+      <ul>
+        <li className="vehicle-status-data-row">
           {this.renderRoutesAffected()
             .toString()
             .replace(/,/g, ", ")}
-        </td>
-      </tr>
+        </li>
+      </ul>
     );
+  }
+
+  renderVehicleList() {
+    const namesList = this.renderRoutesAffected().map(function(name) {
+      return <li>{name}</li>;
+    });
+    return <ul className="render-list">{namesList}</ul>;
   }
 
   renderTableSummaryData() {
@@ -74,27 +80,25 @@ class Situationtable extends Component {
   } //.replace(/<(.*)>/, "") - regex
 
   render() {
+    console.log(this.renderVehicleList());
     return (
-      <div>
-        <Col>
+      <div className="situation-container">
+        <div>
           <h1>ROUTES WITH PLANNED SERVICE CHANGES</h1>
-          <br></br>
-          <p>
-            {this.props.loading
-              ? " LOADING VEHICLE STATUS"
-              : this.renderTableVehicleData()}
-          </p>
-          <br></br>
-          <br></br>
-        </Col>
-        <h3>SERVICE SUMMARY</h3>
-        <Table striped bordered hover id="routes" className="table">
-          <tbody id="bodyTable">
-            {this.props.loading
-              ? " LOADING SUMMARY"
-              : this.renderTableSummaryData()}
-          </tbody>
-        </Table>
+          {this.props.loading
+            ? " LOADING VEHICLE STATUS"
+            : this.renderVehicleList()}
+        </div>
+        <div className="service-summary-data">
+          <h3>SERVICE SUMMARY</h3>
+          <table id="routes" className="summary-table">
+            <tbody id="bodyTable">
+              {this.props.loading
+                ? " LOADING SUMMARY"
+                : this.renderTableSummaryData()}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

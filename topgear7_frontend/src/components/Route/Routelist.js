@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Form, InputGroup, Col, Table, Container} from "react-bootstrap";
 
 class Routelist extends Component {
   constructor() {
@@ -70,10 +69,10 @@ class Routelist extends Component {
   render() {
     const {input_route_search} = this.state;
 
-    const inputFilteredRoutes = this.state.route_data.filter(route => {
+    const inputFilteredRoutes = this.state.route_data.filter(routes => {
       if (input_route_search !== "") {
         return (
-          route.bus_line_name
+          routes.bus_line_name
             .toLowerCase()
             .indexOf(input_route_search.toLowerCase()) !== -1
         );
@@ -87,51 +86,74 @@ class Routelist extends Component {
     let unique = [...new Set(uniqueRoutes)].sort();
 
     return (
-      <div>
-        <Form.Group>
-          <Form.Row>
-            <Col xs="auto">
-              <InputGroup>
-                <Form.Control
-                  name="text"
-                  type="text"
-                  placeholder="Search Bus Routes"
-                  onChange={this.inputHandleOnChange}
-                ></Form.Control>
-              </InputGroup>
-            </Col>
-            <Col xs="auto">
-              <Form.Control
-                as="select"
-                id="route_name"
-                onChange={this.selectedHandleOnChange}
-              >
-                {" "}
+      <div className="route-search">
+        <div className="finder-bars">
+          <div>
+            <h4>SEARCH BUS ROUTE STOPS</h4>
+          </div>
+          <input
+            className="search"
+            name="text"
+            type="text"
+            placeholder="Search Bus Routes"
+            onChange={this.inputHandleOnChange}
+          ></input>
+          <div className="route-stops-dropdown">
+            {this.state.route_data.length !== 0 ? (
+              <select onChange={this.selectedHandleOnChange}>
                 {unique.map((name, i) => (
                   <option value={name} key={i}>
                     {name}
                   </option>
                 ))}
-              </Form.Control>
-            </Col>
-          </Form.Row>
-        </Form.Group>
+              </select>
+            ) : (
+              <h3>LOADING</h3>
+            )}
+          </div>
+        </div>
 
-        {this.state.selected_route ? (
-          <Container>
-            <p id="title">Route: {this.state.selected_route}</p>
-            <p>To: {this.getTableNameDes()}</p>
-            <Table striped bordered hover size="auto" id="dir0_activity_table">
-              <tbody>{this.getStopName(this.getStopList())}</tbody>
-            </Table>
+        <div className="route-stops-tabledata">
+          {this.state.selected_route ? (
+            <div className="stops-tabledata-container">
+              <div className="stops-route-title">
+                <h1>{this.state.selected_route}</h1>
+              </div>
+              <div className="stops-tables">
+                <div className="stops-table-desinfo">
+                  <h4>{this.getTableNameDes()}</h4>
 
-            <br></br>
-            <p>To: {this.getTableNameOri()}</p>
-            <Table striped bordered hover size="auto" id="dir1_activity_table">
-              <tbody>{this.getStopName(this.getStopList()).reverse()}</tbody>
-            </Table>
-          </Container>
-        ) : null}
+                  <table
+                    className="route-stops-destable"
+                    striped
+                    bordered
+                    hover
+                    id="dir0_activity_table"
+                  >
+                    <tbody>{this.getStopName(this.getStopList())}</tbody>
+                  </table>
+                </div>
+
+                <br></br>
+                <div className="stops-table-oriinfo">
+                  <h4>{this.getTableNameOri()}</h4>
+
+                  <table
+                    className="route-stops-oritable"
+                    striped
+                    bordered
+                    hover
+                    id="dir1_activity_table"
+                  >
+                    <tbody>
+                      {this.getStopName(this.getStopList()).reverse()}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
     );
   }

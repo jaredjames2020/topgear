@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Routeactivitytable from "./Routeactivitytable";
 import MTAGooglemap from "./MTAGooglemap";
-import {Form, InputGroup, Col} from "react-bootstrap";
 
 class Routefinder extends Component {
   constructor() {
@@ -25,10 +24,10 @@ class Routefinder extends Component {
   render() {
     const {input_route_search, selected_route} = this.state;
 
-    const inputFilteredRoutes = this.props.vehicleActivity.filter(route => {
+    const inputFilteredRoutes = this.props.vehicleActivity.filter(routes => {
       if (input_route_search !== "") {
         return (
-          route.MonitoredVehicleJourney.PublishedLineName.toLowerCase().indexOf(
+          routes.MonitoredVehicleJourney.PublishedLineName.toLowerCase().indexOf(
             input_route_search.toLowerCase()
           ) !== -1
         );
@@ -58,47 +57,40 @@ class Routefinder extends Component {
     );
 
     return (
-      <div>
-        <Form.Group>
-          <Form.Row>
-            <Col xs="auto">
-              <InputGroup>
-                <Form.Control
-                  name="text"
-                  type="text"
-                  placeholder="Search Bus Routes"
-                  onChange={this.inputHandleOnChange}
-                ></Form.Control>
-              </InputGroup>
-            </Col>
-            <Col xs="auto">
-              {this.props.vehicleActivity.length !== 0 ? (
-                <Form.Control
-                  as="select"
-                  id="route_name"
-                  onChange={this.selectedHandleOnChange}
-                >
-                  {" "}
-                  {unique.map((name, i) => (
-                    <option value={name} key={i}>
-                      {name}
-                    </option>
-                  ))}
-                </Form.Control>
-              ) : (
-                <h2>LOADING</h2>
-              )}
-            </Col>
-          </Form.Row>
-        </Form.Group>
+      <div className="routefinder">
+        <div className="finder-bars">
+          <div className="route-input">
+            <h4>FIND AND TRACK BUS</h4>
+            <input
+              name="text"
+              type="text"
+              placeholder="Search Bus Routes"
+              onChange={this.inputHandleOnChange}
+            />
+          </div>
+          <div className="route-dropdown">
+            <h4>SELECT BUS</h4>
+            {this.props.vehicleActivity.length !== 0 ? (
+              <select id="route_name" onChange={this.selectedHandleOnChange}>
+                {" "}
+                {unique.map((name, i) => (
+                  <option value={name} key={i}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <h3>LOADING</h3>
+            )}
+          </div>
+        </div>
         {this.state.selected_route ? (
           <Routeactivitytable
-            selected_route={selected_route}
+            selected_route={this.state.selected_route}
             directionRef0={directionRef0}
             directionRef1={directionRef1}
           />
         ) : null}
-
         <MTAGooglemap
           directionRef0={directionRef0}
           directionRef1={directionRef1}

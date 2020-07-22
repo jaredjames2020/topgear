@@ -5,7 +5,6 @@ class RouteContainer extends Component {
   render() {
     return (
       <div>
-        ROUTES
         <Routelist />
       </div>
     );

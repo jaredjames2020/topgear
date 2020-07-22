@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Table} from "react-bootstrap";
 import {
   addCongestionActivity,
   addDelayActivity
@@ -72,33 +71,48 @@ class Routeactivitytable extends Component {
     const {getname, gettableheader, gettablename, gettabledata} = this;
 
     return (
-      <div>
-        <h3 id="title">REAL TIME ACTIVITY TRACKER</h3>
-        <h4>{getname(gettablename(directionRef0))}</h4>
-        <Table
-          className="table table-sm"
-          id="dir0_activity_table"
-          onChange={this.handleCongestionOnSelect}
-          onChange={this.handleDelayOnSelect}
-        >
-          <thead>
-            <tr>{gettableheader(directionRef0)}</tr>
-          </thead>
-          <tbody>{gettabledata(directionRef0)}</tbody>
-        </Table>
-
-        <h4>{getname(gettablename(directionRef1))}</h4>
-        <Table
-          className="table table-sm"
-          id="dir1_activity_table"
-          onChange={this.handleCongestionOnSelect}
-          onChange={this.handleDelayOnSelect}
-        >
-          <thead>
-            <tr>{gettableheader(directionRef1)}</tr>
-          </thead>
-          <tbody>{gettabledata(directionRef1)}</tbody>
-        </Table>
+      <div className="routetable">
+        <div className="table-columns">
+          <div className="info">
+            <h3 id="title">REAL TIME ACTIVITY TRACKER</h3>
+          </div>
+          <div className="tables">
+            <div className="des-table">
+              <div className="des-title">
+                <h3>{getname(gettablename(directionRef0))}</h3>
+              </div>
+              <div
+                className="des-data"
+                id="dir0_activity_table"
+                onChange={
+                  (this.handleCongestionOnSelect, this.handleDelayOnSelect)
+                }
+              >
+                <thead>
+                  <tr>{gettableheader(directionRef0)}</tr>
+                </thead>
+                <tbody>{gettabledata(directionRef0)}</tbody>
+              </div>
+            </div>
+            <div className="ori-table">
+              <div className="ori-title">
+                <h3>{getname(gettablename(directionRef1))}</h3>
+              </div>
+              <div
+                className="ori-data"
+                id="dir1_activity_table"
+                onChange={
+                  (this.handleCongestionOnSelect, this.handleDelayOnSelect)
+                }
+              >
+                <thead>
+                  <tr>{gettableheader(directionRef1)}</tr>
+                </thead>
+                <tbody>{gettabledata(directionRef1)}</tbody>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -116,6 +130,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(Routeactivitytable);
+//to show unique locations during review
 // <td>{lat}</td>
 // <td>{long}</td>
 // ["Next Stop", "Congestion", "Delay", "Latitude", "Longitude"]

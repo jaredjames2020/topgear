@@ -6,12 +6,11 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <div className="d-flex" id="wrapper">
-          <div
-            className="bg-dark border-right text-white text-center rounded-lg"
-            id="sidebar-wrapper"
-          >
-            <div className="sidebar-heading">TOP GEAR</div>
+        <div>
+          <div className="bg-dark border-right text-white text-center rounded-lg">
+            <div className="sidebar-heading">
+              <br></br>
+            </div>
             <div className="list-group list-group-flush">
               <Link
                 to="/"

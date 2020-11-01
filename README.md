@@ -15,9 +15,9 @@ TopGear is an application that helps you track, monitor status, and update conge
 
 ### Backend
 
-- git clone git@github.com:greedybrain/Gomojii.git
+- git clone git@github.com:jaredjames2020/topgear.git
 - cd into directory
-- run bundle install to install topgear dependencies
+- run bundle install to install dependencies
 - build database by running rails db:create
 - migrate database by running rails db:migrate
 - seed database by running db:seed

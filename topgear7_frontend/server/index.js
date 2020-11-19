@@ -3,6 +3,8 @@ const request = require('request');
 
 const app = express();
 
+const MTA = process.env.REACT_APP_MTA_API_KEY;
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
@@ -10,7 +12,7 @@ app.use((req, res, next) => {
 
 app.get('/vehicle', (req, res) => {
   request(
-    { url: 'http://api.prod.obanyc.com/api/siri/vehicle-monitoring.json?key=02e06296-1f9a-40a3-a94d-5a3d6ee09f2e' },
+    { url: MTA },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
